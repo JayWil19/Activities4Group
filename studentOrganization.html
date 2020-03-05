@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Educational registration form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            </div>
+        </div>
+    </nav>
+    <div class="main-block">
+
+        <form action="/">
+            <div class="title">
+                <i class="fas fa-pencil-alt"></i>
+                <h2>Register here</h2>
+            </div>
+            <div class="info">
+                <input class="fname" type="text" name="name" placeholder="Full name">
+                <input type="text" name="name" placeholder="Email">
+                <input type="text" name="name" placeholder="Phone number">
+                <input type="password" name="name" placeholder="Password">
+
+                <select>
+                    <option value="course-type" selected>Course type*</option>
+                    <option value="short-courses">Short courses</option>
+                    <option value="featured-courses">Featured courses</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="certificate">Certificate</option>
+                    <option value="masters-degree">Masters degree</option>
+                    <option value="postgraduate">Postgraduate</option>
+                </select>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="checkbox"><span>I agree to the <a href="https://www.w3docs.com/privacy-policy">Privacy Poalicy for W3Docs.</a></span>
+            </div>
+            <button type="submit" href="/">Submit</button>
+        </form>
+    </div>
+</body></html>
