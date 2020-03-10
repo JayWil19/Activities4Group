@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>Educational registration form</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -18,8 +24,8 @@
         </button>
 
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="studentOrganization.html">Event Tracker Sheet</a>
-            <a class="nav-item nav-link" href="Fundraiser.html">Fundraising Request Form<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="studentOrganization.html">Event Tracker Sheet</a>
+            <a class="nav-item nav-link active" href="Fundraiser.html">Fundraising Request Form<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="checkRequest.html">Check Request Form</a>
 
         </div>
@@ -45,12 +51,38 @@
                     <input type="text" name="location" placeholder="Location of student fundraiser">
                     <input type="text" name="fundReason" placeholder="What are the funds being raised for">
                     <input type="number" name="estCost" placeholder="Estimated upfront cost">
+                    Your name <input type="text" name="custName" id="custName"><br>
 
                 </div>
-                <button type="submit" href="/">Submit</button>
+                <button type="submit" onclick="sendMail();">Click to send mail</button>
             </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+
+    <script>
+        function sendMail() {
+            var custName = document.getElementById("custName").value;
+
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "cottrell.lee@ptcollege.edu",
+                Password: "51",
+                To: 'cottrell.lee@ptcollege.edu',
+                From: "cottrell.lee@ptcollege.edu",
+                Subject: "Form Data",
+                Body: "Customer name: " + custName
+            }).then(
+                message => alert(message)
+            );
+        }
+
+    </script>
 </body>
 
 </html>
