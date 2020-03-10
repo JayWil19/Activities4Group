@@ -76,7 +76,7 @@
                 To: 'cottrell.lee@ptcollege.edu',
                 From: "cottrell.lee@ptcollege.edu",
                 Subject: "Form Data",
-                Body: "Customer name: " + custName
+                Body: "Customer name: " + custName + "\nOrganization Name" + document.getElementById("nameOrganization") + "\nOrganization Representative: " + document.getElementById("nameRep") + "\nRepresentative's Email: " + document.getElementById("email") + "\nDate" + document.getElementById("date") + "\nFundraiser Description" + document.getElementById("description") + "\nLocation of Fundraiser" + document.getElementById("location") + "\nReason of Fundraiser" + document.getElementById("fundReason") + "\nEstimated Cost" + document.getElementById("estCost")
             }).then(
                 message => alert(message)
             );
