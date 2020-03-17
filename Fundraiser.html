@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>Educational registration form</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -37,6 +43,7 @@
 
                     <!--These are the fields for the data, add more as you need them , give them easy to remember names-->
 
+
                     <input type="text" name="nameOrganization" id="nameOrganization" placeholder="Name of Student Organization" required>
                     <input type="text" name="nameRep" id="nameRep" placeholder="Name of Student Organization Representative" required>
                     <input type="email" name="emailee" id="emailee" placeholder="Email" required>
@@ -62,6 +69,7 @@
 
     <script>
         function sendMail() {
+
             var sendMailTo = document.getElementById("emailee").value;
             var custName = document.getElementById("custName").value;
             var data = " Organization Name: " + document.getElementById("nameOrganization").value +
@@ -73,17 +81,30 @@
                 " Reason for Fundraiser: " + document.getElementById("fundReason").value +
                 " Estimated Cost: " + document.getElementById("estCost").value;
             //document.write("<p>"+ custName + data +"</p>")
+
+            var custName = document.getElementById("custName").value;
+
+
             Email.send({
                 Host: "smtp.elasticemail.com",
                 Username: "cottrell.lee@ptcollege.edu",
                 Password: "51",
+
                 To: sendMailTo,
                 From: "cottrell.lee@ptcollege.edu",
                 Subject: "Fundraiser Request for " + document.getElementById("nameOrganization").value,
                 Body: "Recorder Name: " + custName + data
             }).then(
                 message => alert("Email sent to " + sendMailTo)
-            );
+
+                To: 'cottrell.lee@ptcollege.edu',
+                From: "cottrell.lee@ptcollege.edu",
+                Subject: "Form Data",
+                Body: "Customer name: " + custName + "\nOrganization Name" + document.getElementById("nameOrganization") + "\nOrganization Representative: " + document.getElementById("nameRep") + "\nRepresentative's Email: " + document.getElementById("email") + "\nDate" + document.getElementById("date") + "\nFundraiser Description" + document.getElementById("description") + "\nLocation of Fundraiser" + document.getElementById("location") + "\nReason of Fundraiser" + document.getElementById("fundReason") + "\nEstimated Cost" + document.getElementById("estCost")
+            }).then(
+            message => alert(message)
+
+        );
         }
 
     </script>
