@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
-    
     <!--Email Service-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
 </head>
 
@@ -34,7 +34,7 @@
     <div z>
         <div class="main-block">
 
-            <form action="/">
+            <form>
                 <div class="title">
                     <i class="fas fa-pencil-alt"></i>
                     <h2>Meeting and Event Tracker Sheet</h2>
@@ -43,28 +43,62 @@
 
                     <!--These are the fields for the data, add more as you need them , give them easy to remember names-->
 
-                    <input type="text" name="nameOrganization" placeholder="Name of Student Organization">
+                    <input type="text" name="nameOrganization" id="nameOrganization" placeholder="Name of Student Organization" required>
 
-                    <input type="text" name="nameRep" placeholder="Name of Student Organization Representative">
+                    <input type="text" name="nameRep" id="nameRep" placeholder="Name of Student Organization Representative" required>
 
-                    <input type="email" name="emailRep" placeholder="Email of Student Organization Representative">
+                    <input type="email" name="emailRep" id="emailRep" placeholder="Email of Student Organization Representative" required>
 
-                    <input type="text" name="dateMeeting" placeholder="Date/Time of Meeting/Event">
+                    <input type=date name="dateMeeting" id="dateMeeting" placeholder="Date of Meeting/Event" required>
 
-                    <input type="text" name="numberMeeting" placeholder="Number of Attending Members at Meeting/Event">
+                    <input type=number name="numberMeeting" id="numberMeeting" placeholder="Number of Attending Members at Meeting/Event" required>
 
-                    <input type="text" name="costMeeting" placeholder="Cost for Meeting/Event">
+                    <input type="text" name="costMeeting" id="costMeeting" placeholder="Cost for Meeting/Event" required>
 
-                    <input type="text" name="futureEvents" placeholder="Future Events">
+                    <input type="text" name="futureEvents" id="futureEvents" placeholder="Future Events">
 
-                    <input type="text" name="numMembers" placeholder="Number of Current Members">
+                    <input type="number" name="numMembers" id="numMembers" placeholder="Number of Current Members" required>
 
+                    <input type="text" name="custName" id="custName" placeholder="Your Name" required>
 
                 </div>
-                <button type="submit" href="/">Submit</button>
+                <input type="button" onclick="sendMail();" value="Click to send email">
             </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+
+    <script>
+        function sendMail() {
+            var custName = document.getElementById("custName").value;
+            var data = " Organization Name: " + document.getElementById("nameOrganization").value +
+                " Organization Representative: " + document.getElementById("nameRep").value +
+                " Representative's Email: " + document.getElementById("emailRep").value +
+                " Date and Time of Meeting: " + document.getElementById("dateMeeting").value +
+                " Number of Attending Members: " + document.getElementById("numberMeeting").value +
+                " Cost for Meeting and Event: " + document.getElementById("costMeeting").value +
+                " Future Events: " + document.getElementById("futureEvents").value +
+                " Number of Current Members: " + document.getElementById("numMembers").value;
+            //document.write("<p>"+ custName + data +"</p>")
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "cottrell.lee@ptcollege.edu",
+                Password: "51", //Password must be replaced to work
+                To: "",
+                From: "cottrell.lee@ptcollege.edu",
+                Subject: "Meeting Tracker for " + document.getElementById("nameOrganization").value,
+                Body: "Recorder name: " + custName + data
+            }).then(
+                message => alert(message)
+            );
+        }
+
+    </script>
 </body>
 
 </html>
