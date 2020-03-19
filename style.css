@@ -3,6 +3,7 @@
      min-height: 100%;
  }
 
+
  body,
  div,
  form,
@@ -151,6 +152,12 @@
      }
  }
 
+
  z {
      border-top: 5px;
  }
+
+ .blackBackground {
+     background: rgba(0, 0, 0, 0.5);
+ }
+
